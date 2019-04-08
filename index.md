@@ -8,7 +8,7 @@
             //     alert(qString);
             // }
 
-            var getAuthUrl = "https://api.instagram.com/oauth/authorize/?client_id=6c49785b68e343b8ae060297bfa7641b&redirect_uri=https://chowheikan.github.io/comp3121.github.io&response_type=token"
+            var getAuthUrl = "https://api.instagram.com/oauth/authorize/?client_id=6c49785b68e343b8ae060297bfa7641b&redirect_uri=https://chowheikan.github.io/comp3121.github.io&response_type=token&hl=en"
 
 
             function authFunc(){
