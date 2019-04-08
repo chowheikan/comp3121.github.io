@@ -7,9 +7,35 @@
                 qString = queryString.split("q=")[1].split("&")[0];
                 alert(qString);
             }
-            function authFunc() {
-                window.location.href = "https://www.instagram.com/oauth/authorize/?client_id=6c49785b68e343b8ae060297bfa7641b&redirect_uri=https://github.com&response_type=token";
+
+            var getAuthUrl = "https://api.instagram.com/oauth/authorize/?client_id=6c49785b68e343b8ae060297bfa7641b&redirect_uri=https://chowheikan.github.io/comp3121.github.io&response_type=token"
+
+
+            function authFunc(){
+            var win = window.open(getAuthUrl, "auth_window");
             }
+
+            var accessToken = window.location.hash.replace('#','?')
+            console.log(accessToken);
+
+
+        var xhr = new XMLHttpRequest();
+
+        xhr.addEventListener("readystatechange", function () {
+        if (this.readyState === 4) {
+            var response = JSON.parse(this.responseText)
+            console.log(response);
+            response.data.map(function(item){
+
+            var img = document.createElement('img');
+            img.src =  item.images.low_resolution.url; document.querySelector(".container").appendChild(img);
+            
+            })
+        }
+        });
+
+        xhr.open("GET", "https://api.instagram.com/v1/users/self/media/recent/"+accessToken);
+        xhr.send();
         </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134268415-1"></script>
