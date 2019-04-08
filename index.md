@@ -47,6 +47,7 @@
         </script>
     </head>
     <body>
-        <button onClick="authFunc()">Authorize</button>        
+        <button onClick="authFunc()">Authorize</button>   
+        <div class="container"></div>     
     </body>
 </html>
