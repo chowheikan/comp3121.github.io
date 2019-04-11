@@ -35,11 +35,13 @@
   var SCOPERS = 'https://www.googleapis.com/auth/youtube.readonly';
 
   function init() {
-      return gapi.client.init({
+      var clientInit = gapi.client.init({
         discoveryDocs: DISCOVERY_DOCS,
         clientId: CLIENT_ID,
         scope: SCOPERS
       })
+
+      console.log(clientInit);
   }
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
