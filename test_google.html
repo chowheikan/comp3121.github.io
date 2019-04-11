@@ -1,4 +1,5 @@
 <script src="https://apis.google.com/js/api.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script>
   /**
    * Sample JavaScript code for youtube.channels.list
@@ -43,7 +44,21 @@
 
       console.log(clientInit);
   }
+
+  function getChannel() {
+      gapi.client.youtube.channels.list({
+          'part': 'snippet, contentDetails,statistics',
+          'forUsername': 'GoogleDevelopers'
+      }).then(function(response){
+        console.log(response);
+        var channel = response.result.items[0];
+        $("#result").val('This channel\'s ID is ' + channel.id + '. ' +
+        'Its title is \'' + channel.snippet.title + ', ' + 'and it has ' + channel.statistics.viewCount + ' views');
+      });
+  }
 </script>
 <button onclick="authenticate().then(loadClient)">authorize and load</button>
 <button onclick="execute()">execute</button>
 <button onclick="init()">init</button>
+<button onclick="getChannel()">init</button>
+<p id="result"></p>
