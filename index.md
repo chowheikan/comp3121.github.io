@@ -34,7 +34,7 @@
         }
         });
 
-        xhr.open("GET", "https://api.instagram.com/v1/users/self/media/recent/?accessToken="+accessToken);
+        xhr.open("GET", "https://api.instagram.com/v1/users/self/media/recent/"+accessToken);
         xhr.send();
         </script>
         <!-- Global site tag (gtag.js) - Google Analytics -->
